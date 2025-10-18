@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { Clock, AlertTriangle, ArrowRight, Zap, Target, Heart } from "lucide-react"
+import { AlertTriangle, ArrowRight } from "lucide-react"
 
 const Urgency: React.FC = () => {
   const warningSigns = [

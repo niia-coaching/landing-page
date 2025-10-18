@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle, Clock, Star, Users, Briefcase, BookOpen, Video, MessageCircle, Calendar, Shield } from 'lucide-react'
+import { ArrowRight, CheckCircle, Users, Briefcase, BookOpen, Video, MessageCircle, Calendar, Shield } from 'lucide-react'
 
 const Services: React.FC = () => {
   const programs = [

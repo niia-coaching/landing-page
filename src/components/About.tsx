@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Zap, Star, Target, Brain, ArrowRight, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { Heart, Zap, Star, Target, Brain, ArrowRight, Calendar } from "lucide-react";
 
 interface TimelineEvent {
   id: number;
@@ -95,15 +95,6 @@ const About: React.FC = () => {
     return () => clearInterval(interval);
   }, [isAutoPlaying, timelineEvents.length]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % timelineEvents.length);
-    setIsAutoPlaying(false);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + timelineEvents.length) % timelineEvents.length);
-    setIsAutoPlaying(false);
-  };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);

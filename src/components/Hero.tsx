@@ -297,13 +297,13 @@ const Hero: React.FC = () => {
 };
 
 const NeuralSVG: React.FC<NeuralSVGProps> = ({ brainPath, nodes, edges }) => {
-  // subtle float for the whole brain
-  const float = {
-    animate: {
-      y: [0, -8, 0],
-      transition: { duration: 8, repeat: Infinity, ease: "easeInOut" }
-    }
-  };
+      // subtle float for the whole brain
+      const float = {
+        animate: {
+          y: [0, -8, 0],
+          transition: { duration: 8, repeat: Infinity, ease: "easeInOut" as const }
+        }
+      };
 
   return (
     <motion.svg

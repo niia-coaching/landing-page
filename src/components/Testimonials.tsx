@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { Star, Quote, Play, ArrowRight } from "lucide-react"
+import { Star, Quote, ArrowRight } from "lucide-react"
 
 const Testimonials: React.FC = () => {
   const testimonials = [
