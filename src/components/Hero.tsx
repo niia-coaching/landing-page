@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import { ArrowRight } from "lucide-react";
 
 interface Node {
   id: number;
@@ -76,7 +77,7 @@ const Hero: React.FC = () => {
   );
 
   return (
-    <section className="min-h-screen bg-gradient-to-r from-niia-beige-light via-white to-white flex items-center relative overflow-hidden pt-32">
+    <section className="min-h-screen bg-gradient-to-br from-niia-beige-light via-white to-white flex items-center relative overflow-hidden pt-20 lg:pt-32">
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Large abstract shape behind the image */}
@@ -97,8 +98,8 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
           {/* Left Side - Text Content */}
           <motion.div
             className="space-y-8"
@@ -153,40 +154,53 @@ const Hero: React.FC = () => {
             <p className="text-lg text-niia-gray leading-relaxed max-w-2xl">
               Si vous vous réveillez déjà fatigué(e), si vous faites semblant d'aller bien en réunion 
               alors qu'intérieurement c'est le désert, si vous en avez marre de tenir pour tout le monde 
-              alors que vous ne tenez plus vous-même... Vous n'êtes pas seul(e). 
-              <br/><br/>
-              After 3 years of silent collapse, I created the method that allowed me to transform 
-              my traumas into wisdom. Today, I accompany executive leaders and entrepreneurs 
-              in their sovereign renaissance.
+              alors que vous ne tenez plus vous-même... <strong className="text-niia-black">Vous n'êtes pas seul(e).</strong>
             </p>
+            <p className="text-lg text-niia-gray leading-relaxed max-w-2xl">
+              Après 3 ans d'effondrement silencieux, j'ai créé la méthode qui m'a permis de transformer 
+              mes traumas en sagesse. <strong className="text-niia-teal">Aujourd'hui, j'accompagne les leaders exécutifs et entrepreneurs 
+              dans leur renaissance souveraine.</strong>
+            </p>
+            
+            {/* Social Proof */}
+            <div className="flex items-center space-x-6 mt-6">
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 bg-niia-teal rounded-full border-2 border-white"></div>
+                <div className="w-8 h-8 bg-niia-blue-dark rounded-full border-2 border-white"></div>
+                <div className="w-8 h-8 bg-niia-terracotta rounded-full border-2 border-white"></div>
+              </div>
+              <div className="text-sm text-niia-gray">
+                <span className="font-semibold text-niia-black">500+</span> vies transformées
+              </div>
+            </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pb-16">
+            <div className="flex flex-col sm:flex-row gap-3 pb-8">
               <motion.button
-                className="group px-6 py-3 bg-niia-teal text-white font-semibold rounded-xl hover:bg-niia-teal-dark transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg"
+                className="group px-6 py-3 bg-niia-teal text-white font-bold rounded-xl hover:bg-niia-teal-dark transition-all duration-300 flex items-center justify-center space-x-2 shadow-xl text-sm flex-1"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                <span>Session Stratégique Gratuite</span>
+                <span>S'inscrire à la Masterclass</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.button>
 
               <motion.button
-                className="group px-6 py-3 border-2 border-niia-gray text-niia-gray font-semibold rounded-xl hover:border-niia-teal hover:text-niia-teal transition-all duration-300 flex items-center justify-center space-x-2"
+                className="group px-6 py-3 border-2 border-niia-teal text-niia-teal font-bold rounded-xl hover:bg-niia-teal hover:text-white transition-all duration-300 flex items-center justify-center space-x-2 text-sm flex-1"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                <div className="w-4 h-4 bg-niia-teal rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <span>Voir les Programmes</span>
+                <span>Découvrir la Méthode NIIA</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </div>
+            
           </motion.div>
 
           {/* Right Side - Brain Neural Network with Enhanced Design */}
@@ -196,20 +210,20 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative flex items-center justify-center w-full h-96">
+            <div className="relative flex items-center justify-center w-full h-64 sm:h-80 lg:h-96">
               {/* Background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-niia-teal/10 to-niia-blue-dark/10 rounded-full blur-3xl"></div>
               
               {/* Animated Brain Neural Network */}
-              <div className="relative z-10 w-full h-full max-w-lg">
+              <div className="relative z-10 w-full h-full max-w-md lg:max-w-lg">
                 <NeuralSVG brainPath={brainPath} nodes={nodes} edges={edges} />
               </div>
 
-              {/* Floating Value Cards - More Visible */}
+              {/* Floating Value Cards - Closer to brain */}
               
               {/* Energy Card - Top Right */}
               <motion.div
-                className="absolute -top-8 -right-8 bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-2xl border-2 border-niia-teal/30 z-30"
+                className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 lg:-top-4 lg:-right-4 bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-2xl border-2 border-niia-teal/30 z-30"
                 animate={{
                   y: [0, -10, 0],
                   rotate: [0, 3, 0],
@@ -221,15 +235,15 @@ const Hero: React.FC = () => {
                 }}
               >
                 <div className="text-center">
-                  <div className="w-4 h-4 bg-niia-teal rounded-full mx-auto mb-3 animate-pulse"></div>
-                  <p className="text-sm text-niia-gray font-semibold mb-2">Énergie Sacrée</p>
-                  <p className="text-2xl font-bold text-niia-teal">100%</p>
+                  <div className="w-3 h-3 lg:w-4 lg:h-4 bg-niia-teal rounded-full mx-auto mb-2 lg:mb-3 animate-pulse"></div>
+                  <p className="text-xs lg:text-sm text-niia-gray font-semibold mb-1 lg:mb-2">Énergie Sacrée</p>
+                  <p className="text-lg lg:text-2xl font-bold text-niia-teal">100%</p>
                 </div>
               </motion.div>
 
               {/* Souveraineté Card - Left */}
               <motion.div
-                className="absolute top-1/2 -left-16 bg-gradient-to-br from-niia-beige to-niia-beige-light backdrop-blur-md rounded-2xl p-6 shadow-2xl border-2 border-niia-beige/40 z-30"
+                className="absolute top-1/2 -left-2 sm:-left-4 lg:-left-8 bg-gradient-to-br from-niia-beige to-niia-beige-light backdrop-blur-md rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-2xl border-2 border-niia-beige/40 z-30"
                 animate={{
                   x: [0, -8, 0],
                   rotate: [0, -2, 0],
@@ -242,15 +256,15 @@ const Hero: React.FC = () => {
                 }}
               >
                 <div className="text-center">
-                  <div className="w-4 h-4 bg-niia-blue-dark rounded-full mx-auto mb-3"></div>
-                  <p className="text-sm text-niia-gray font-semibold mb-2">Souveraineté</p>
-                  <p className="text-lg font-bold text-niia-black">Intérieure</p>
+                  <div className="w-3 h-3 lg:w-4 lg:h-4 bg-niia-blue-dark rounded-full mx-auto mb-2 lg:mb-3"></div>
+                  <p className="text-xs lg:text-sm text-niia-gray font-semibold mb-1 lg:mb-2">Souveraineté</p>
+                  <p className="text-sm lg:text-lg font-bold text-niia-black">Intérieure</p>
                 </div>
               </motion.div>
 
               {/* Renaissance Card - Bottom Right */}
               <motion.div
-                className="absolute bottom-4 -right-12 bg-gradient-to-r from-niia-blue-dark to-niia-teal-dark rounded-2xl p-6 shadow-2xl text-white z-30"
+                className="absolute bottom-1 -right-3 sm:bottom-2 sm:-right-6 lg:bottom-4 lg:-right-12 bg-gradient-to-r from-niia-blue-dark to-niia-teal-dark rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-2xl text-white z-30"
                 animate={{
                   x: [0, 8, 0],
                   rotate: [0, 2, 0],
@@ -263,15 +277,15 @@ const Hero: React.FC = () => {
                 }}
               >
                 <div className="text-center">
-                  <div className="w-4 h-4 bg-white/90 rounded-full mx-auto mb-3"></div>
-                  <p className="text-sm opacity-90 font-semibold mb-2">Renaissance</p>
-                  <p className="text-lg font-bold">Souveraine</p>
+                  <div className="w-3 h-3 lg:w-4 lg:h-4 bg-white/90 rounded-full mx-auto mb-2 lg:mb-3"></div>
+                  <p className="text-xs lg:text-sm opacity-90 font-semibold mb-1 lg:mb-2">Renaissance</p>
+                  <p className="text-sm lg:text-lg font-bold">Souveraine</p>
                 </div>
               </motion.div>
 
               {/* Transformation Card - Top Left */}
               <motion.div
-                className="absolute -top-4 -left-12 bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border-2 border-niia-teal/40 z-30"
+                className="absolute -top-1 -left-3 sm:-top-2 sm:-left-6 lg:-top-4 lg:-left-12 bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-5 shadow-2xl border-2 border-niia-teal/40 z-30"
                 animate={{
                   y: [0, -5, 0],
                   scale: [1, 1.05, 1],
@@ -284,8 +298,8 @@ const Hero: React.FC = () => {
                 }}
               >
                 <div className="text-center">
-                  <p className="text-sm text-niia-teal font-bold">Transformation</p>
-                  <p className="text-sm text-niia-gray font-semibold">Authentique</p>
+                  <p className="text-xs lg:text-sm text-niia-teal font-bold">Transformation</p>
+                  <p className="text-xs lg:text-sm text-niia-gray font-semibold">Authentique</p>
                 </div>
               </motion.div>
             </div>

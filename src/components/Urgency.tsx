@@ -54,11 +54,11 @@ const Urgency: React.FC = () => {
             • MOMENT DE VÉRITÉ
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-niia-black mb-6">
-            Votre Corps Vous Crie d'Arrêter
+            Votre Vie Ne Peut Plus Attendre
           </h2>
           <p className="text-xl text-niia-gray max-w-3xl mx-auto leading-relaxed">
-            Si vous lisez ces lignes, c'est que vous savez au fond de vous que quelque chose doit changer. 
-            Votre corps vous envoie des signaux d'alarme depuis trop longtemps.
+            Chaque jour que vous attendez, c'est un jour de plus dans l'effondrement silencieux. 
+            <strong className="text-niia-teal"> Votre renaissance commence maintenant ou jamais.</strong>
           </p>
         </motion.div>
 

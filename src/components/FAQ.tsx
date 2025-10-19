@@ -57,7 +57,7 @@ const FAQ: React.FC = () => {
   }
 
   return (
-    <section className="py-20 bg-white">
+        <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12">
           

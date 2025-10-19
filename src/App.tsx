@@ -7,6 +7,7 @@ import Stats from "./components/Stats"
 import Testimonials from "./components/Testimonials"
 import FAQ from "./components/FAQ"
 import Urgency from "./components/Urgency"
+import FinalCTA from "./components/FinalCTA"
 import Footer from "./components/Footer"
 
 function App() {
@@ -19,9 +20,10 @@ function App() {
       <About />
       <Stats />
       <Testimonials />
-      <FAQ />
-      <Urgency />
-      <Footer />
+        <FAQ />
+        <Urgency />
+        <FinalCTA />
+        <Footer />
     </div>
   )
 }

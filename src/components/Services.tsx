@@ -6,48 +6,54 @@ const Services: React.FC = () => {
   const programs = [
     {
       id: 'individual',
-      title: 'Coaching Individuel',
-      subtitle: 'Accompagnement personnalisé',
-      description: 'Un accompagnement sur mesure pour votre transformation personnelle et professionnelle.',
-      duration: '3-12 mois',
-      sessions: 'Bi-mensuelles',
-      price: 'À partir de 500€/mois',
+      title: 'Renaissance Souveraine',
+      subtitle: 'Transformation complète en 90 jours',
+      description: 'Votre transformation personnelle exclusive avec Ayoub Sadry. Résultats garantis ou remboursé.',
+      duration: '90 jours',
+      sessions: '12 sessions individuelles',
+      price: '2,997€',
+      originalPrice: '4,997€',
       features: [
-        'Diagnostic complet des 7 Batteries',
-        'Plan d\'action personnalisé',
-        'Sessions de coaching individuelles',
-        'Suivi et ajustements réguliers',
-        'Accès aux ressources exclusives'
+        '12 sessions individuelles (90 min chacune)',
+        'Diagnostic complet des 7 Batteries de Vie',
+        'Plan d\'action personnalisé et suivi quotidien',
+        'Accès exclusif aux ressources NIIA Premium',
+        'Support illimité par WhatsApp',
+        'Garantie de résultats ou remboursement'
       ],
       icon: Users,
-      popular: false
+      popular: true,
+      urgency: 'Dernière place disponible'
     },
     {
       id: 'group',
-      title: 'Coaching de Groupe',
-      subtitle: 'Transformation collective',
-      description: 'Rejoignez une communauté de leaders en transformation pour une expérience partagée.',
+      title: 'Méthode NIIA Collective',
+      subtitle: 'Transformation en groupe restreint',
+      description: 'Transformez-vous au sein d\'une communauté d\'âmes courageuses. Groupe de 6 personnes maximum.',
       duration: '6 mois',
-      sessions: 'Mensuelles',
-      price: 'À partir de 200€/mois',
+      sessions: '8 sessions de groupe',
+      price: '997€',
+      originalPrice: '1,497€',
       features: [
-        'Groupe de 8-12 personnes maximum',
-        'Sessions de groupe mensuelles',
-        'Ateliers thématiques',
-        'Communauté de soutien',
-        'Ressources partagées'
+        '8 sessions de groupe (2h chacune)',
+        'Groupe de 6 personnes maximum',
+        'Ateliers pratiques et exercices',
+        'Accès au forum privé NIIA',
+        'Ressources et outils exclusifs',
+        'Soutien communautaire continu'
       ],
       icon: Briefcase,
-      popular: true
+      popular: false,
+      urgency: 'Prochaine session : 15 Janvier'
     },
     {
       id: 'enterprise',
-      title: 'Formation Entreprise',
-      subtitle: 'Transformation organisationnelle',
-      description: 'Développez le potentiel de vos équipes avec notre approche NIIA adaptée au monde professionnel.',
-      duration: 'Sur mesure',
-      sessions: 'Flexibles',
-      price: 'Sur devis',
+      title: 'Transformation d\'Équipe',
+      subtitle: 'Libérez le potentiel de vos équipes',
+      description: 'Créez une culture de performance et de bien-être dans votre organisation.',
+      duration: '3-6 mois',
+      sessions: 'Sur mesure',
+      price: 'À partir de 5,000€',
       features: [
         'Audit organisationnel',
         'Formation des managers',
@@ -88,7 +94,7 @@ const Services: React.FC = () => {
   ]
 
   return (
-    <section id="services" className="py-20 lg:py-32 bg-white">
+    <section id="services" className="py-20 lg:py-32 bg-niia-beige-light">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -101,11 +107,11 @@ const Services: React.FC = () => {
             • NOS PROGRAMMES DE TRANSFORMATION
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-niia-black mb-6">
-            Programmes
+            Votre Renaissance commence maintenant
           </h2>
           <p className="text-xl text-niia-gray max-w-3xl mx-auto leading-relaxed">
-            Découvrez nos programmes de transformation conçus pour vous accompagner 
-            dans votre renaissance souveraine, quel que soit votre niveau de départ.
+            <strong className="text-niia-black">3 programmes exclusifs</strong> pour transformer votre effondrement silencieux 
+            en renaissance souveraine. <strong className="text-niia-teal">Résultats garantis ou remboursé.</strong>
           </p>
         </motion.div>
 
@@ -114,7 +120,7 @@ const Services: React.FC = () => {
           {programs.map((program, index) => (
             <motion.div
               key={program.id}
-              className={`relative bg-white border border-niia-beige-light p-8 ${
+              className={`relative bg-white border border-niia-beige-light p-8 flex flex-col h-full ${
                 program.popular ? 'border-niia-teal' : ''
               }`}
               initial={{ opacity: 0, y: 20 }}
@@ -130,46 +136,50 @@ const Services: React.FC = () => {
                 </div>
               )}
 
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-niia-beige-light rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <program.icon className="w-8 h-8 text-niia-teal" />
-                </div>
-                <h3 className="text-2xl font-bold text-niia-black mb-2">
-                  {program.title}
-                </h3>
-                <p className="text-niia-gray font-medium">
-                  {program.subtitle}
-                </p>
-              </div>
-
-              <p className="text-niia-gray mb-6 text-center">
-                {program.description}
-              </p>
-
-              <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-sm">
-                  <span className="text-niia-gray">Durée:</span>
-                  <span className="font-semibold text-niia-black">{program.duration}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-niia-gray">Sessions:</span>
-                  <span className="font-semibold text-niia-black">{program.sessions}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-niia-gray">Tarif:</span>
-                  <span className="font-semibold text-niia-teal">{program.price}</span>
-                </div>
-              </div>
-
-              <div className="space-y-3 mb-8">
-                {program.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-niia-teal flex-shrink-0" />
-                    <span className="text-sm text-niia-gray">{feature}</span>
+              {/* Main Content - grows to fill available space */}
+              <div className="flex-1">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-niia-beige-light rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <program.icon className="w-8 h-8 text-niia-teal" />
                   </div>
-                ))}
+                  <h3 className="text-2xl font-bold text-niia-black mb-2">
+                    {program.title}
+                  </h3>
+                  <p className="text-niia-gray font-medium">
+                    {program.subtitle}
+                  </p>
+                </div>
+
+                <p className="text-niia-gray mb-6 text-center">
+                  {program.description}
+                </p>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-niia-gray">Durée:</span>
+                    <span className="font-semibold text-niia-black">{program.duration}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-niia-gray">Sessions:</span>
+                    <span className="font-semibold text-niia-black">{program.sessions}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-niia-gray">Tarif:</span>
+                    <span className="font-semibold text-niia-teal">{program.price}</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  {program.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-niia-teal flex-shrink-0" />
+                      <span className="text-sm text-niia-gray">{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
+              {/* Button - always at bottom */}
               <motion.button
                 className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 ${
                   program.popular

@@ -38,7 +38,7 @@ const Stats: React.FC = () => {
             Des Résultats Concrets
           </h2>
           <p className="text-xl text-niia-gray max-w-4xl mx-auto leading-relaxed">
-            Des chiffres qui témoignent de l'efficacité de notre méthode des 7 batteries de vie
+            Des chiffres qui témoignent de l'efficacité de notre méthode IMPACT
           </p>
         </motion.div>
 

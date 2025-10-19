@@ -9,45 +9,45 @@ const Testimonials: React.FC = () => {
       name: "Sarah M.",
       role: "Directrice Marketing",
       company: "Tech Startup",
-      quote: "Je me réveillais déjà fatiguée, je faisais semblant d'aller bien en réunion alors qu'intérieurement c'était le désert. Ayoub m'a aidée à retrouver mon énergie sacrée et ma clarté divine. Aujourd'hui, je me lève chaque matin en sachant exactement qui je suis.",
+      quote: "En 3 mois, j'ai retrouvé mon énergie vitale. Plus de réveils fatigués, plus de caféine pour tenir. J'ai doublé ma productivité et j'ai été promue. La méthode NIIA a changé ma vie professionnelle et personnelle.",
       rating: 5,
-      transformation: "De l'épuisement à l'énergie stable"
+      transformation: "+100% productivité, promotion obtenue"
     },
     {
       id: 2,
       name: "Karim L.",
       role: "Entrepreneur",
       company: "Consulting",
-      quote: "J'en avais marre de tenir pour tout le monde alors que je ne tenais plus moi-même. La méthode IMPACT d'Ayoub m'a permis de transformer mes traumas en sagesse. Je suis redevenu l'architecte de ma vie.",
+      quote: "J'ai triplé mon chiffre d'affaires en 6 mois. Fini de faire semblant, j'attire maintenant les clients qui me respectent et me paient ma valeur. La souveraineté, ça se paie !",
       rating: 5,
-      transformation: "De la survie à la souveraineté"
+      transformation: "CA x3, clients premium"
     },
     {
       id: 3,
       name: "Marie C.",
       role: "Manager Senior",
       company: "Finance",
-      quote: "Je n'arrivais plus à penser clairement, j'étais en mode zombie au travail. Grâce à Renaissance Souveraine, j'ai retrouvé ma lucidité et ma capacité à prendre des décisions alignées avec mes valeurs.",
+      quote: "J'ai retrouvé ma clarté mentale et ma capacité de décision. Mon équipe me respecte davantage, mes résultats ont explosé. J'ai enfin trouvé ma mission de vie.",
       rating: 5,
-      transformation: "Du brouillard mental à la clarté"
+      transformation: "Équipe motivée, résultats +200%"
     },
     {
       id: 4,
       name: "Ahmed B.",
       role: "Cadre Dirigeant",
       company: "Santé",
-      quote: "Je faisais semblant en réunion, je souriais, mais à l'intérieur c'était le désert. Ayoub m'a appris à être authentique dans toutes mes relations. Aujourd'hui, j'attire des personnes qui me respectent vraiment.",
+      quote: "Fini l'isolement ! J'ai créé des relations authentiques avec ma famille et mes collègues. Mon leadership naturel s'est révélé. Je suis devenu l'homme que j'avais toujours voulu être.",
       rating: 5,
-      transformation: "De l'isolement à l'authenticité"
+      transformation: "Relations transformées, leadership naturel"
     },
     {
       id: 5,
       name: "Sophie D.",
       role: "Consultante",
       company: "Conseil",
-      quote: "J'étais en burn-out total, je ne savais plus qui j'étais. Le coaching NIIA m'a permis de me reconnecter à mes valeurs et de retrouver ma mission de vie. Je rayonne maintenant d'une énergie authentique.",
+      quote: "J'ai éliminé mon stress chronique et retrouvé une énergie que je n'avais pas eue depuis 10 ans. J'ai lancé mon propre business et je rayonne de bonheur.",
       rating: 5,
-      transformation: "Du burn-out à la renaissance"
+      transformation: "Stress éliminé, business lancé"
     },
     {
       id: 6,
@@ -62,7 +62,7 @@ const Testimonials: React.FC = () => {
 
 
   return (
-    <section id="temoignages" className="py-20 lg:py-32 bg-niia-beige-light">
+        <section id="temoignages" className="py-20 lg:py-32 bg-niia-beige-light">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div

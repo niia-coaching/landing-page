@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 interface Benefit {
@@ -10,42 +10,63 @@ interface Benefit {
 }
 
 const Benefits: React.FC = () => {
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    setDragStart(clientX);
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    setDragOffset(clientX - dragStart);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    setDragOffset(0);
+  };
 
   const benefits: Benefit[] = [
     {
       id: 1,
-      title: "Renaissance Souveraine",
-      description: "Transformez vos traumas en sagesse et retrouvez votre pouvoir intérieur pour une vie authentique et épanouie.",
+      title: "Fini l'Épuisement Chronique",
+      description: "Retrouvez votre énergie vitale en 30 jours. Plus de réveils fatigués, plus de caféine pour tenir. Une vitalité naturelle et durable qui vous permet de rayonner.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=faces",
-      category: "Transformation"
+      category: "Résultat Garanti"
     },
     {
       id: 2,
-      title: "Énergie Vitale Optimale",
-      description: "Rechargez vos 7 Batteries de Vie pour une vitalité physique, mentale et spirituelle durable.",
+      title: "Arrêtez de Faire Semblant",
+      description: "Fini le masque en réunion. Développez une authenticité qui attire les bonnes personnes et repousse les toxiques. Des relations vraies et épanouissantes.",
       image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=faces",
-      category: "Santé"
+      category: "Transformation"
     },
     {
       id: 3,
-      title: "Relations Authentiques",
-      description: "Développez des connexions profondes et significatives dans tous les aspects de votre vie.",
+      title: "Redevenez l'Architecte de Votre Vie",
+      description: "Reprenez le contrôle total. Plus de réaction, plus de survie. Vous créez votre réalité selon vos valeurs et vos aspirations profondes.",
       image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=300&fit=crop&crop=faces",
-      category: "Relations"
+      category: "Souveraineté"
     },
     {
       id: 4,
-      title: "Succès Professionnel",
-      description: "Libérez votre potentiel de leadership et créez l'impact que vous désirez dans votre carrière.",
+      title: "Leadership Authentique",
+      description: "Inspirez naturellement votre équipe. Plus de management par la peur. Un leadership basé sur l'exemple et l'impact positif.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=faces",
-      category: "Carrière"
+      category: "Succès"
     },
     {
       id: 5,
-      title: "Clarté Spirituelle",
-      description: "Connectez-vous à votre essence divine et trouvez votre mission de vie pour un sens profond.",
+      title: "Mission de Vie Claire",
+      description: "Trouvez votre pourquoi profond. Plus de confusion existentielle. Une direction claire qui donne sens à chaque action.",
       image: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
-      category: "Spiritualité"
+      category: "Clarté"
     }
   ];
 
@@ -60,18 +81,18 @@ const Benefits: React.FC = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-niia-black mb-6">
-            Obtenez des résultats
-            <br />
-            <span className="text-niia-teal">durables et concrets</span>
-          </h2>
-          <p className="text-lg text-niia-gray max-w-3xl mx-auto leading-relaxed">
-            La méthode NIIA va au-delà des simples stratégies de coaching. Vous obtiendrez une clarté cristalline sur vos objectifs, 
-            créerez un plan d'action pour les atteindre, et aurez l'accompagnement et l'élan nécessaires pour garantir des résultats.
-            <br /><br />
-            Que ce soit dans votre vie personnelle ou professionnelle, vos finances ou vos relations, voici comment vous obtiendrez 
-            l'avantage dont vous avez besoin pour un changement véritablement incroyable.
-          </p>
+            <h2 className="text-4xl lg:text-5xl font-bold text-niia-black mb-6">
+              Arrêtez de souffrir en silence
+              <br />
+              <span className="text-niia-teal">Commencez à rayonner</span>
+            </h2>
+            <p className="text-lg text-niia-gray max-w-3xl mx-auto leading-relaxed">
+              <strong className="text-niia-black">Vous en avez marre de :</strong> Vous réveiller fatigué(e), faire semblant d'aller bien, 
+              tenir pour tout le monde alors que vous ne tenez plus vous-même ?
+              <br /><br />
+              <strong className="text-niia-teal">La méthode NIIA vous donne :</strong> L'énergie vitale, l'authenticité, 
+              la souveraineté et la clarté que vous méritez. En 90 jours, vous redevenez l'architecte de votre vie.
+            </p>
         </motion.div>
 
         {/* Film Strip Carousel */}
@@ -92,21 +113,27 @@ const Benefits: React.FC = () => {
               ))}
             </div>
 
-            {/* Moving Film Strip */}
-            <motion.div
-              className="flex space-x-6 py-8"
-              animate={{
-                x: [0, -100 * benefits.length],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              style={{ width: `${benefits.length * 100}%` }}
-              onMouseEnter={() => {}}
-              onMouseLeave={() => {}}
-            >
+                {/* Moving Film Strip */}
+                <motion.div
+                  ref={containerRef}
+                  className="flex space-x-6 py-8 cursor-grab active:cursor-grabbing"
+                  animate={{
+                    x: isDragging ? dragOffset : [0, -100 * benefits.length],
+                  }}
+                  transition={{
+                    duration: isDragging ? 0 : 20,
+                    repeat: isDragging ? 0 : Infinity,
+                    ease: "linear",
+                  }}
+                  style={{ width: `${benefits.length * 100}%` }}
+                  onMouseDown={handleDragStart}
+                  onMouseMove={handleDragMove}
+                  onMouseUp={handleDragEnd}
+                  onMouseLeave={handleDragEnd}
+                  onTouchStart={handleDragStart}
+                  onTouchMove={handleDragMove}
+                  onTouchEnd={handleDragEnd}
+                >
               {/* Duplicate benefits for seamless loop */}
               {[...benefits, ...benefits].map((benefit, index) => (
                 <motion.div

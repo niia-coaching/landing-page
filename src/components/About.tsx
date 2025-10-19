@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Zap, Star, Target, Brain, ArrowRight, Calendar } from "lucide-react";
 
@@ -19,6 +19,43 @@ interface TimelineEvent {
 const About: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+    setIsAutoPlaying(false);
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    setDragStart(clientX);
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    setDragOffset(clientX - dragStart);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    // Determine if we should change slides based on drag distance
+    if (Math.abs(dragOffset) > 50) {
+      if (dragOffset > 0) {
+        // Dragged right, go to previous slide
+        setCurrentSlide((prev) => (prev - 1 + timelineEvents.length) % timelineEvents.length);
+      } else {
+        // Dragged left, go to next slide
+        setCurrentSlide((prev) => (prev + 1) % timelineEvents.length);
+      }
+    }
+    
+    setDragOffset(0);
+    // Resume auto-play after a delay
+    setTimeout(() => setIsAutoPlaying(true), 3000);
+  };
 
   const timelineEvents: TimelineEvent[] = [
     {
@@ -104,7 +141,7 @@ const About: React.FC = () => {
   const currentSlideData = timelineEvents[currentSlide];
 
   return (
-    <section id="apropos" className="py-20 lg:py-32 bg-gradient-to-br from-niia-beige-light to-white relative overflow-hidden">
+        <section id="apropos" className="py-20 lg:py-32 bg-gradient-to-br from-niia-beige-light to-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-1/4 w-80 h-80">
@@ -153,19 +190,32 @@ const About: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Timeline Carousel */}
-        <div className="relative">
-          {/* Main Carousel Container */}
-          <div className="relative overflow-hidden bg-white border border-niia-beige-light rounded-2xl">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="relative"
+            {/* Timeline Carousel */}
+            <div className="relative">
+              {/* Main Carousel Container */}
+              <div 
+                ref={containerRef}
+                className="relative overflow-hidden bg-white border border-niia-beige-light rounded-2xl cursor-grab active:cursor-grabbing"
+                onMouseDown={handleDragStart}
+                onMouseMove={handleDragMove}
+                onMouseUp={handleDragEnd}
+                onMouseLeave={handleDragEnd}
+                onTouchStart={handleDragStart}
+                onTouchMove={handleDragMove}
+                onTouchEnd={handleDragEnd}
               >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ 
+                      opacity: 1, 
+                      x: isDragging ? dragOffset : 0 
+                    }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="relative"
+                  >
                 <div className="grid lg:grid-cols-2 gap-0 min-h-[600px]">
                   {/* Content Side */}
                   <div className="p-12 lg:p-16 flex flex-col justify-center">

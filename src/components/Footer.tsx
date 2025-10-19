@@ -5,7 +5,7 @@ import { Instagram, Youtube, Facebook, Linkedin, Mail } from "lucide-react"
 const Footer: React.FC = () => {
   return (
     <>
-      <footer className="bg-niia-beige-light text-niia-black py-20">
+          <footer className="bg-niia-beige-light text-niia-black py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           
           {/* Brand Section */}
@@ -116,22 +116,21 @@ const Footer: React.FC = () => {
         </div>
       </footer>
 
-      {/* Floating CTA Button */}
-      <motion.div
-        className="fixed bottom-6 right-6 z-50"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        <motion.button
-          className="bg-niia-teal hover:bg-niia-teal-dark text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-colors duration-300 flex items-center space-x-2"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Mail className="w-4 h-4" />
-          <span>Contact</span>
-        </motion.button>
-      </motion.div>
+          {/* Floating CTA Button */}
+          <motion.div
+            className="fixed bottom-6 right-6 z-50"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1, duration: 0.5 }}
+          >
+            <motion.button
+              className="bg-niia-teal hover:bg-niia-teal-dark text-white font-bold px-6 py-4 rounded-full shadow-xl transition-all duration-300 flex items-center space-x-2 text-lg"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span>🎯 Masterclass GRATUITE</span>
+            </motion.button>
+          </motion.div>
     </>
   )
 }
